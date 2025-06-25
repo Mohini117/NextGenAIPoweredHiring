@@ -14,7 +14,12 @@ def predict_output(user_input):
         
      
     prediction = model.predict(user_input)[0]
+    if prediction == 10:
+        evaluation = "Congratulations! You are a perfect match for the job post."
+    elif prediction >= 8:
+        evaluation = "Excellent! You are a strong candidate for the job post."
+    elif prediction >= 6:
+        evaluation = "Good! You meet the basic requirements for the job post." 
 
-    return {
-        "predicted_category": int(prediction) 
-    }  
+    return f"Your AI Powered Predicted Score is {int(prediction)} Out Of 10! {evaluation}" 
+    

@@ -3,9 +3,23 @@ from fastapi.responses import JSONResponse
 from schema.userinput import UserInput  
 import pandas as pd
 from model.predict import predict_output, model, MODEL_VERSION
+
+from fastapi.middleware.cors import CORSMiddleware
+
+ 
   
 
 app = FastAPI()
+
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # In production, specify your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
     
 # human readable       
 @app.get('/')
